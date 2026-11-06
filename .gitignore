@@ -1,0 +1,10 @@
+# Flutter build output and tool caches
+.dart_tool/
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store
