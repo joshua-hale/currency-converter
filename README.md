@@ -2,8 +2,6 @@
 
 A Flutter app that converts an amount between seven currencies using a fixed rate table. The result updates as you type, change a currency or tap the swap button, so there is no convert button.
 
-> Add two or three screenshots here.
-
 ## Running it
 
 You need Flutter 3.10 or newer. From the project folder, run:
