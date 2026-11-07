@@ -23,6 +23,10 @@ flutter run -d chrome
 - `lib/screens` puts those widgets together and holds the state.
 - `test` has unit tests for the logic and widget tests for the screen.
 
+## Design
+
+The colours match the CampusLink design system from my Figma prototype. The deep teal (#0E4D64) is used for the result card so the converted amount is the most prominent thing on screen, and the amber accent (#FFB547) on the swap button picks up the ring in the CampusLink logo. All of the colours are defined once in the theme in `main.dart`, and every text colour meets the WCAG AA contrast ratio of 4.5:1.
+
 ## Exchange rates
 
 Each rate is stored as the amount of that currency that equals 1 USD (for example GBP is 0.79 and JPY is 150). Any pair is worked out by dividing one rate by the other, so adding a currency only takes one new line. The values are samples, not live rates.
@@ -36,6 +40,14 @@ The screen uses `setState` and only stores three things, the amount, the "from" 
 ## Edge cases
 
 An empty field or a lone decimal point counts as 0. Letters, minus signs and a second decimal point can't be typed, and input is capped at 12 characters. Large results get thousand separators and shrink to fit the card. Picking the same currency twice gives a rate of exactly 1, and yen is shown without decimals.
+
+## Tests
+
+Run `flutter test` from the project folder. There are two test files.
+
+`test/converter_test.dart` checks the conversion logic on its own. It covers the brief's worked example (100 and 200 USD to GBP), the swapped GBP to USD case, same-currency conversion, empty and invalid input, thousand separators, yen with no decimals, and rates shown without trailing zeros.
+
+`test/widget_test.dart` checks the screen itself. One test types a new amount and confirms the result changes without pressing anything, and the other taps the swap button and confirms both the result and the rate line update.
 
 ## Limitations
 
