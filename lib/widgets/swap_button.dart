@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-/// Round button that swaps the two currencies. The icon spins half a turn on each tap.
+/// Round button that swaps the two currencies 
+/// The icon spins half a turn on each tap
+/// It uses the amber accent colour to match the CampusLink logo
 class SwapButton extends StatefulWidget {
   const SwapButton({super.key, required this.onPressed});
 
@@ -20,6 +22,7 @@ class _SwapButtonState extends State<SwapButton> {
 
   @override
   Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
     return AnimatedRotation(
       turns: _turns,
       duration: const Duration(milliseconds: 300),
@@ -27,6 +30,10 @@ class _SwapButtonState extends State<SwapButton> {
         onPressed: _handleTap,
         tooltip: 'Swap currencies',
         iconSize: 28,
+        style: IconButton.styleFrom(
+          backgroundColor: scheme.secondary,
+          foregroundColor: scheme.onSecondary,
+        ),
         icon: const Icon(Icons.swap_vert),
       ),
     );
